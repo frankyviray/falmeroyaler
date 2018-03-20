@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 var reservation = [
 {
-    Name: "harry",
+    name: "harry",
     phoneNumber: "23434598",
     email:"asdfjkl@yahoo.com",
     uniquieId: "johnny Tsunami"

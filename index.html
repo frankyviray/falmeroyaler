@@ -21,55 +21,73 @@
             <br>
             <button type= "button" class= "btn btn-info"><span class="glyphicon glyphicon-search"></span>View Tables</button>
             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-home"></span>Home</button>
-        
+            
         </div>
-
+        
         <div class="row">
             <div class="col-lg-12">
-          
                 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><legend>Reserve Your Table</legend></h3>
-                </div>
-
-                <div class="panel-body">
-          
-                    <form role="form">
-          
-                    <div class="form-group">
-                        <label for="reserve-name">Name</label>
-                        <input type="text" class="form-control" id="reserve-name">
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><legend>Reserve Your Table</legend></h3>
                     </div>
-          
-                        <div class="form-group">
-                          <label for="reserve-phone">Phone Number</label>
-                          <input type="text" class="form-control" id="reserve-phone">
-                        </div>
-          
-                        <div class="form-group">
-                          <label for="reserve-email">Email</label>
-                          <input type="text" class="form-control" id="reserve-email">
-                        </div>
-          
-                        <div class="form-group">
-                          <label for="reserve-unique-id">Unique ID</label>
-                          <input type="text" class="form-control" id="reserve-unique-id">
-                        </div>
-          
-                        <button type="submit" class="btn btn-lg btn-success submit">Submit</button>
-                      </form>
-          
+                    
+                    <div class="panel-body">
+                        
+                        <form role="form">
+                            
+                            <div class="form-group">
+                                <label for="reserve-name">Name</label>
+                                <input type="text" class="form-control" id="reserve-name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reserve-phone">Phone Number</label>
+                                <input type="text" class="form-control" id="reserve-phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reserve-email">Email</label>
+                                <input type="text" class="form-control" id="reserve-email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reserve-unique-id">Unique ID</label>
+                                <input type="text" class="form-control" id="reserve-unique-id">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-lg btn-success submit">Submit</button>
+                        </form>
+                        
                     </div>
-                  </div>
-          
                 </div>
-              </div>
-
+                
+            </div>
+        </div>
+        
     </div>
-
-
-
+    <script type="text/javascript">
+        // Question: What does this code do?
+        $(".submit").on("click", function(event) {
+          event.preventDefault();
+          console.log(event);
+          var newReservation = {
+            name: $("#reserve-name").val().trim(),
+            phoneNumber: $("#reserve-phone").val().trim(),
+            email: $("#reserve-email").val().trim(),
+            uniqueId: $("#reserve-unique-id").val().trim()
+          };
+    
+          // Question: What does this code do??
+          $.post("/api/new", newReservation)
+            .then(function(data) {
+              console.log(data);
+              alert("Reservation Added");
+            });
+        });
+    </script>
+    
     
 </body>
 </html>
